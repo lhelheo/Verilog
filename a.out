@@ -1,47 +1,109 @@
 #! /c/Source/iverilog-install/bin/vvp
 :ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
 :ivl_delay_selection "TYPICAL";
-:vpi_time_precision + 0;
+:vpi_time_precision - 10;
 :vpi_module "E:\iverilog\lib\ivl\system.vpi";
 :vpi_module "E:\iverilog\lib\ivl\vhdl_sys.vpi";
 :vpi_module "E:\iverilog\lib\ivl\vhdl_textio.vpi";
 :vpi_module "E:\iverilog\lib\ivl\v2005_math.vpi";
 :vpi_module "E:\iverilog\lib\ivl\va_math.vpi";
-S_000002d47ef124d0 .scope module, "somadorCompleto" "somadorCompleto" 2 3;
+S_0000021fd35cab90 .scope module, "somadorcompleto_tb" "somadorcompleto_tb" 2 4;
+ .timescale -9 -10;
+v0000021fd365eeb0_0 .var "a0", 0 0;
+v0000021fd365e9b0_0 .var "b0", 0 0;
+v0000021fd365e870_0 .var "ci0", 0 0;
+v0000021fd365ef50_0 .net "co0", 0 0, L_0000021fd3613d90;  1 drivers
+v0000021fd365e910_0 .net "s0", 0 0, L_0000021fd3613c40;  1 drivers
+S_0000021fd3615880 .scope module, "uut" "somadorcompleto" 2 10, 3 20 0, S_0000021fd35cab90;
  .timescale 0 0;
-    .port_info 0 /INPUT 4 "A";
-    .port_info 1 /INPUT 4 "B";
-    .port_info 2 /INPUT 1 "Cin";
-    .port_info 3 /OUTPUT 4 "S";
-    .port_info 4 /OUTPUT 1 "Cout";
-o000002d47ef46fd8 .functor BUFZ 4, C4<zzzz>; HiZ drive
-v000002d47ef12cc0_0 .net "A", 3 0, o000002d47ef46fd8;  0 drivers
-o000002d47ef47008 .functor BUFZ 4, C4<zzzz>; HiZ drive
-v000002d47ef12660_0 .net "B", 3 0, o000002d47ef47008;  0 drivers
-o000002d47ef47038 .functor BUFZ 1, C4<z>; HiZ drive
-v000002d47ef12700_0 .net "Cin", 0 0, o000002d47ef47038;  0 drivers
-v000002d47ef127a0_0 .net "Cout", 0 0, L_000002d47ef8bdc0;  1 drivers
-v000002d47ef12840_0 .net "S", 3 0, L_000002d47ef8c680;  1 drivers
-L_000002d47ef8cc90 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
-v000002d47ef128e0_0 .net *"_ivl_10", 0 0, L_000002d47ef8cc90;  1 drivers
-v000002d47eefe3a0_0 .net *"_ivl_11", 4 0, L_000002d47ef8c040;  1 drivers
-v000002d47eefe440_0 .net *"_ivl_13", 4 0, L_000002d47ef8c9a0;  1 drivers
-L_000002d47ef8ccd8 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
-v000002d47eefe4e0_0 .net *"_ivl_16", 3 0, L_000002d47ef8ccd8;  1 drivers
-v000002d47eefe610_0 .net *"_ivl_17", 4 0, L_000002d47ef8ca40;  1 drivers
-v000002d47eefe6b0_0 .net *"_ivl_3", 4 0, L_000002d47ef8c5e0;  1 drivers
-L_000002d47ef8cc48 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
-v000002d47eefe750_0 .net *"_ivl_6", 0 0, L_000002d47ef8cc48;  1 drivers
-v000002d47ef8c540_0 .net *"_ivl_7", 4 0, L_000002d47ef8c220;  1 drivers
-L_000002d47ef8bdc0 .part L_000002d47ef8ca40, 4, 1;
-L_000002d47ef8c680 .part L_000002d47ef8ca40, 0, 4;
-L_000002d47ef8c5e0 .concat [ 4 1 0 0], o000002d47ef46fd8, L_000002d47ef8cc48;
-L_000002d47ef8c220 .concat [ 4 1 0 0], o000002d47ef47008, L_000002d47ef8cc90;
-L_000002d47ef8c040 .arith/sum 5, L_000002d47ef8c5e0, L_000002d47ef8c220;
-L_000002d47ef8c9a0 .concat [ 1 4 0 0], o000002d47ef47038, L_000002d47ef8ccd8;
-L_000002d47ef8ca40 .arith/sum 5, L_000002d47ef8c040, L_000002d47ef8c9a0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 1 "s";
+    .port_info 4 /OUTPUT 1 "cout";
+L_0000021fd3613b60 .functor XOR 1, v0000021fd365eeb0_0, v0000021fd365e9b0_0, C4<0>, C4<0>;
+L_0000021fd3613c40 .functor XOR 1, L_0000021fd3613b60, v0000021fd365e870_0, C4<0>, C4<0>;
+L_0000021fd3613af0 .functor AND 1, v0000021fd365eeb0_0, v0000021fd365e9b0_0, C4<1>, C4<1>;
+L_0000021fd3613cb0 .functor AND 1, v0000021fd365eeb0_0, v0000021fd365e870_0, C4<1>, C4<1>;
+L_0000021fd3613bd0 .functor OR 1, L_0000021fd3613af0, L_0000021fd3613cb0, C4<0>, C4<0>;
+L_0000021fd3613ee0 .functor AND 1, v0000021fd365e9b0_0, v0000021fd365e870_0, C4<1>, C4<1>;
+L_0000021fd3613d90 .functor OR 1, L_0000021fd3613bd0, L_0000021fd3613ee0, C4<0>, C4<0>;
+v0000021fd35cad20_0 .net *"_ivl_0", 0 0, L_0000021fd3613b60;  1 drivers
+v0000021fd35cbd50_0 .net *"_ivl_10", 0 0, L_0000021fd3613ee0;  1 drivers
+v0000021fd35cadc0_0 .net *"_ivl_4", 0 0, L_0000021fd3613af0;  1 drivers
+v0000021fd35e2910_0 .net *"_ivl_6", 0 0, L_0000021fd3613cb0;  1 drivers
+v0000021fd3615a10_0 .net *"_ivl_8", 0 0, L_0000021fd3613bd0;  1 drivers
+v0000021fd3615ab0_0 .net "a", 0 0, v0000021fd365eeb0_0;  1 drivers
+v0000021fd3615b50_0 .net "b", 0 0, v0000021fd365e9b0_0;  1 drivers
+v0000021fd3615bf0_0 .net "cin", 0 0, v0000021fd365e870_0;  1 drivers
+v0000021fd3613880_0 .net "cout", 0 0, L_0000021fd3613d90;  alias, 1 drivers
+v0000021fd3613920_0 .net "s", 0 0, L_0000021fd3613c40;  alias, 1 drivers
+    .scope S_0000021fd35cab90;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "somadorcompleto_tb.vcd" {0 0 0};
+    %vpi_call 2 17 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000021fd35cab90 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365eeb0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e9b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000021fd365e870_0, 0, 1;
+    %delay 100, 0;
+    %vpi_call 2 27 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
 # The file index is used to find the file name in the following table.
-:file_names 3;
+:file_names 4;
     "N/A";
     "<interactive>";
-    "somadorcompleto.v";
+    ".\somadorcompleto_tb.v";
+    "./somadorcompleto.v";
