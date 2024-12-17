@@ -1,7 +1,7 @@
-module ula (a, b, x, y, z, s);
+module ula (a, b, x, y, z, S);
     input [3:0] a, b;
-    input x, y, z;
-    output [3:0] s;
+    input [2:0] x, y, z; // Expanded to 3 bits
+    output [3:0] S;
 
     wire [3:0] w0, w1, w2, w3, w4, w5, w6, w7;
 
@@ -16,5 +16,6 @@ module ula (a, b, x, y, z, s);
     assign w7 = ~a;
 
     mux8x1_4b muxout (.i0(w0), .i1(w1), .i2(w2), .i3(w3),
-     .i4(w4), .i5(w5), .i6(w6), .i7(w7), .s0(x), .s1(y), .s2(z), .f(s));
+                      .i4(w4), .i5(w5), .i6(w6), .i7(w7), 
+                      .s0(x), .s1(y), .s2(z), .f(S));
 endmodule
