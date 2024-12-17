@@ -57,7 +57,7 @@ module ula_tb;
         $display("Starting testbench for ULA...");
 
         // Configuração do dumpfile para o gtkwave
-        $dumpfile("ula_tb.vcd"); // Gera o arquivo .vcd
+        $dumpfile("ula_sim.vcd"); // Gera o arquivo .vcd
         $dumpvars(0, ula_tb);    // Registra todos os sinais do módulo de teste
 
         // Inicializa entradas
